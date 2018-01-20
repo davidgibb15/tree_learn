@@ -1,0 +1,20 @@
+<div class="question_card">
+	<div class="card_container">
+		<p class="question">
+			<strong>Question:</strong>
+			<%= link_to question_path(question) do%>
+				<%= question.title %>
+			<% end %>
+		</p>
+
+		<p class="answer">
+			<strong>Answer:</strong>
+			<%= question.answer %>
+		</p>
+
+		<%= link_to 'subquestion', new_question_path(question.id) %>
+		<%= link_to 'Edit', edit_question_path(question) %>
+		<%= link_to 'Show', question_path(question) %>
+		<%= link_to 'Destroy', question_path(question), method: :delete, data: { confirm: 'Are you sure?' } %>
+	</div>
+</div>
