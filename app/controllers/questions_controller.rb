@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
 	def index
-		@questions = Question.all
+		@questions = current_user.questions
 	end
 	def show
-		@question = Question.find(params[:id])
+		@question = current_user.questions.find(params[:id])
 		@questions = @question.root.self_and_descendants
 	end
 
@@ -12,11 +12,11 @@ class QuestionsController < ApplicationController
 	end
 
 	def edit
-		@question = Question.find(params[:id])
+		@question = current_user.questions.find(params[:id])
 	end
 
 	def create
-		@question = Question.new(question_params)
+		@question = current_user.questions.new(question_params)
 		if @question.save
 			redirect_to @question
 		else
@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
 
 	private
 		def question_params
-			params.require(:question).permit(:title, :answer, :parent_id, :lft, :rgt)
+			params.require(:question).permit(:title, :answer, :parent_id, :lft, :rgt, :user_id, :sort_order)
 		end
 
 

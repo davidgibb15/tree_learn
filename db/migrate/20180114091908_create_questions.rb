@@ -8,6 +8,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.integer :rgt, :null => false, :index => true
       t.integer :depth, :null => false, :default => 0
       t.integer :children_count, :null => false, :default => 0
+      
       t.timestamps
     end
   end
